@@ -1,0 +1,67 @@
+CREATE TABLE `department` (
+  `id` int PRIMARY KEY,
+  `name` varchar(255),
+  `faculty_id` int
+);
+
+CREATE TABLE `faculty` (
+  `id` int PRIMARY KEY,
+  `name` varchar(255)
+);
+
+CREATE TABLE `major` (
+  `id` int PRIMARY KEY,
+  `name` varchar(255),
+  `department_id` int
+);
+
+CREATE TABLE `subject` (
+  `id` int PRIMARY KEY,
+  `name` varchar(255),
+  `major_id` int
+);
+
+CREATE TABLE `student` (
+  `id` int PRIMARY KEY unique auto_increment,
+  `name` varchar(255),
+  `middle_name` varchar(255),
+  `family_name` varchar(255),
+  `email` varchar (255) unique,
+  `password` varchar(255) unique,
+  `faculty_number` int unique,
+  `group` int,
+  `average_grade` decimal,
+  `major_id` int
+);
+
+CREATE TABLE `teacher` (
+  `id` int PRIMARY KEY,
+  `name` varchar(255),
+  `middle_name` varchar(255),
+  `family_name` varchar(255),
+  `email` varchar(255),
+  `password` varchar(255),
+  `ranks` varchar(255),
+  `subject_id` int
+);
+
+CREATE TABLE `grades` (
+  `id` int PRIMARY KEY,
+  `grade` decimal,
+  `student_id` int,
+  `subject_id` int
+);
+
+ALTER TABLE `subject` ADD FOREIGN KEY (`major_id`) REFERENCES `major` (`id`);
+
+ALTER TABLE `student` ADD FOREIGN KEY (`major_id`) REFERENCES `major` (`id`);
+
+ALTER TABLE `teacher` ADD FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`);
+
+ALTER TABLE `grades` ADD FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`);
+
+ALTER TABLE `grades` ADD FOREIGN KEY (`student_id`) REFERENCES `student` (`id`);
+
+ALTER TABLE `major` ADD FOREIGN KEY (`department_id`) REFERENCES `department` (`id`);
+
+ALTER TABLE `department` ADD FOREIGN KEY (`faculty_id`) REFERENCES `faculty` (`id`);
