@@ -21,8 +21,13 @@
 
             <property name="show_sql">true</property>
 
-            <mapping class="Users.Teacher"/>
-
+            <mapping class="entity.Teacher"/>
+            <mapping class="entity.Student"/>
+            <mapping class="entity.Subject"/>
+            <mapping class="entity.Department"/>
+            <mapping class="entity.Faculty"/>
+            <mapping class="entity.Student_grade"/>
+            <mapping class="entity.Major"/>
     </session-factory>
 
 </hibernate-configuration>

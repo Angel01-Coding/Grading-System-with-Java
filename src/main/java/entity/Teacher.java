@@ -1,4 +1,4 @@
-package Users;
+package entity;
 
 import jakarta.persistence.*;
 
@@ -102,15 +102,31 @@ public class Teacher {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Teacher teacher = (Teacher) o;
-        return getId() == teacher.getId() && getSubject_id() == teacher.getSubject_id() && getName().equals(teacher.getName()) && getMiddle_name().equals(teacher.getMiddle_name()) && getFamily_name().equals(teacher.getFamily_name()) && getEmail().equals(teacher.getEmail()) && getPassword().equals(teacher.getPassword()) && Objects.equals(getRanks(), teacher.getRanks());
+
+        return getId() == teacher.getId() &&
+                getSubject_id() == teacher.getSubject_id() &&
+                getName().equals(teacher.getName()) &&
+                getMiddle_name().equals(teacher.getMiddle_name()) &&
+                getFamily_name().equals(teacher.getFamily_name()) &&
+                getEmail().equals(teacher.getEmail()) &&
+                getPassword().equals(teacher.getPassword()) &&
+                Objects.equals(getRanks(), teacher.getRanks());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getMiddle_name(), getFamily_name(), getEmail(), getPassword(), getRanks(), getSubject_id());
+        return Objects.hash(getId(),
+                getName(),
+                getMiddle_name(),
+                getFamily_name(),
+                getEmail(),
+                getPassword(),
+                getRanks(),
+                getSubject_id());
     }
 
     @Override

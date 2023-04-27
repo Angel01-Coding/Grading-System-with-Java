@@ -1,4 +1,6 @@
-import Users.Teacher;
+import entity.Student;
+import entity.Teacher;
+import entity.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -44,7 +46,7 @@ public class mappingTest {
     }
 
     @Test
-    void firstTestForMappingObject() {
+    void firstTestForMappingObjectTeacher() {
 
         Teacher teacher = new Teacher("Angel"
                 , "Ivelinov"
@@ -60,6 +62,122 @@ public class mappingTest {
             session.persist(teacher);
             assertNotNull(session.get(Teacher.class, teacher.getId()));
             session.getTransaction().rollback();
+
+
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void secondTestForMappingStudent(){
+
+        Student student = new Student("Petar"
+                , "Evelinov"
+                , "Atanasov"
+                , "testEmail@gmail88.com"
+                ,"testPassword2357"
+                , "206213998"
+                , 1
+                , 5.65
+                , 1);
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            session.persist(student);
+            assertNotNull(session.get(Student.class, student.getId()));
+            session.getTransaction();
+
+
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void testMappingObjectSubjectt(){
+
+        Subject subject = new Subject("Mathematics", 1);
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            session.persist(subject);
+            assertNotNull(session.get(Subject.class, subject.getId()));
+            session.getTransaction().rollback();
+
+
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void testMappingObjectDepartment(){
+
+        Department dep = new Department("Power engineeringg",2);
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            session.persist(dep);
+            assertNotNull(session.get(Department.class, dep.getId()));
+            session.getTransaction();
+
+
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void testMappingObjectFaculty(){
+
+        Faculty fac = new Faculty("Computer science");
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            session.persist(fac);
+            assertNotNull(session.get(Faculty.class, fac.getId()));
+            session.getTransaction();
+
+
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void testMappingObjectStudentGrade(){
+
+        Student_grade grade = new Student_grade(4.56, 1, 2);
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            session.persist(grade);
+            assertNotNull(session.get(Student_grade.class, grade.getId()));
+            session.getTransaction();
+
+
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void testMappingObjectMajor(){
+
+        Major major = new Major("Navigation and Shipbuilding", 7);
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            session.persist(major);
+            assertNotNull(session.get(Major.class, major.getId()));
+            session.getTransaction();
 
 
         } catch (HibernateException e) {
