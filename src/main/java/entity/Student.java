@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +22,18 @@ public class Student {
     private double average_grade;
     private int major_id;
 
+    public Collection<Student_grade> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(Collection<Student_grade> grades) {
+        this.grades = grades;
+    }
+
+    @OneToMany(mappedBy = "student")
+    private Collection<Student_grade> grades = new ArrayList<>();
+
+    public Student(){}
     public Student(String name,
                    String middleName,
                    String familyName,

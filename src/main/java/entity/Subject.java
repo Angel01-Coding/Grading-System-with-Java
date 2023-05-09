@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -13,12 +15,8 @@ public class Subject {
     private int id;
     private String name;
     private int major_id;
-
-    public Subject(String name, int idMajor) {
-
-        this.name = name;
-        this.major_id = idMajor;
-    }
+    @OneToMany(mappedBy = "grade")
+    private Collection<Student_grade> grades = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -42,6 +40,14 @@ public class Subject {
 
     public void setMajor_id(int major_id) {
         this.major_id = major_id;
+    }
+
+    public Collection<Student_grade> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(Collection<Student_grade> grades) {
+        this.grades = grades;
     }
 
     @Override

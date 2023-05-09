@@ -11,6 +11,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import services.StudentService;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class mappingTest {
@@ -98,7 +100,7 @@ public class mappingTest {
     @Test
     void testMappingObjectSubjectt(){
 
-        Subject subject = new Subject("Mathematics", 1);
+        Subject subject = new Subject();
 
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
@@ -152,7 +154,7 @@ public class mappingTest {
     @Test
     void testMappingObjectStudentGrade(){
 
-        Student_grade grade = new Student_grade(4.56, 1, 2);
+        Student_grade grade = new Student_grade();
 
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
@@ -183,5 +185,22 @@ public class mappingTest {
         } catch (HibernateException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Test
+    void testSubjectsView(){
+        StudentService studentService = new StudentService();
+
+        Student student = studentService.getAllSubjectsByStudentId(1);
+
+
+    }
+
+    @Test
+    void testGetAllStudents(){
+
+        StudentService ss = new StudentService();
+
+        ss.getAllStudents();
     }
 }

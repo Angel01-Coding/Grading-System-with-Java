@@ -11,15 +11,10 @@ public class Student_grade {
     private int id;
 
     private double grade;
-    private int student_id;
-    private int subject_id;
-
-    public Student_grade(double grade, int student_id, int subject_id) {
-
-        this.grade = grade;
-        this.student_id = student_id;
-        this.subject_id = subject_id;
-    }
+    @ManyToOne
+    private Student student;
+    @ManyToOne
+    private Subject subject;
 
     public int getId() {
         return id;
@@ -37,20 +32,20 @@ public class Student_grade {
         this.grade = grade;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public int getSubject_id() {
-        return subject_id;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubject_id(int subject_id) {
-        this.subject_id = subject_id;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
     @Override
@@ -58,12 +53,12 @@ public class Student_grade {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student_grade that = (Student_grade) o;
-        return getId() == that.getId() && Double.compare(that.getGrade(), getGrade()) == 0 && getStudent_id() == that.getStudent_id() && getSubject_id() == that.getSubject_id();
+        return getId() == that.getId() && Double.compare(that.getGrade(), getGrade()) == 0 && getStudent() == that.getStudent() && getSubject() == that.getSubject();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGrade(), getStudent_id(), getSubject_id());
+        return Objects.hash(getId(), getGrade(), getStudent(), getSubject());
     }
 
     @Override
@@ -71,8 +66,8 @@ public class Student_grade {
         return "Student_grade{" +
                 "id=" + id +
                 ", grade=" + grade +
-                ", student_id=" + student_id +
-                ", subject_id=" + subject_id +
+                ", student=" + student +
+                ", subject=" + subject +
                 '}';
     }
 }
