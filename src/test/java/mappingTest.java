@@ -188,7 +188,7 @@ public class mappingTest {
     }
 
     @Test
-    void testSubjectsView(){
+    void testGetAllSubjectsByStudentId(){
         StudentService studentService = new StudentService();
 
         Student student = studentService.getAllSubjectsByStudentId(1);
