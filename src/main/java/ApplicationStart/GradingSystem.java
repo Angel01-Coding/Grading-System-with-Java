@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +19,7 @@ public class GradingSystem extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(GradingSystem.class.getResource("grading-system-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 320.0, 275.0);
         stage.setTitle("Grading system");
         stage.setWidth(750.0);
         stage.setHeight(500.0);
@@ -31,7 +29,6 @@ public class GradingSystem extends Application {
         Image image = new Image(stream);
         ImageView iv = new ImageView();
         iv.setImage(image);
-        //imageView.setImage(image);
         stage.getIcons().add(image);
 
         stage.show();

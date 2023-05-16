@@ -38,7 +38,7 @@ public class StudentService {
         return result;
     }
 
-    public Student getAllSubjectsByStudentId(int studentId){
+    public Student searchStudentById(int studentId){
 
         Session session = sessionFactory.openSession();
         Student student = session.createQuery("select u from Student u where u.id=:studentId",

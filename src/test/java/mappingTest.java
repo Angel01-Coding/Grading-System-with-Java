@@ -13,6 +13,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import services.StudentService;
 
+import java.util.Collection;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class mappingTest {
@@ -188,12 +190,13 @@ public class mappingTest {
     }
 
     @Test
-    void testGetAllSubjectsByStudentId(){
+    void searchStudentById(){
+
         StudentService studentService = new StudentService();
 
-        Student student = studentService.getAllSubjectsByStudentId(1);
+        Student student = studentService.searchStudentById(1);
 
-
+        Collection<Student_grade> grades = student.getGrades();
     }
 
     @Test
